@@ -1,0 +1,30 @@
+{
+  "name": "amocrm-api-server",
+  "version": "1.0.0",
+  "description": "simple amo crm api proxy server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandrGuk/amoCrm-api-server.git"
+  },
+  "keywords": [
+    "amocrm",
+    "api",
+    "server"
+  ],
+  "author": "Alexander Guk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexandrGuk/amoCrm-api-server/issues"
+  },
+  "homepage": "https://github.com/AlexandrGuk/amoCrm-api-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2"
+  }
+}
