@@ -3,6 +3,7 @@ const app = express();
 const axios = require('axios');
 
 app.get('/api/contacts', async (request, response) => {
+    response.set('Access-Control-Allow-Origin', '*')
     let cookies = await auth();
     if ( cookies !== null ) {
         const query = request.query.query ? `?query=${request.query.query}` : '';
@@ -15,10 +16,10 @@ app.get('/api/contacts', async (request, response) => {
         response.send(contacts);
         return;
     }
-    response.send('reload page');
+    response.send(null);
 });
 
-app.listen(3000, async () => {
+app.listen(3001, async () => {
     console.log("Server started!");
 })
 
@@ -37,14 +38,4 @@ function getContactList(response) {
     if (response.data.response.contacts && response.status === 200) {
         return response.data.response.contacts
     }
-}
-
-function waiting(ms) {
-    return new Promise(resolve => {
-        (function delay() {
-            setTimeout(() => {
-                resolve();
-            }, ms);
-        })();
-    });
 }
