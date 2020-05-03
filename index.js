@@ -13,6 +13,17 @@ app.get('/api/contacts', async (request, response) => {
             withCredentials: true,
             headers: headers
         }).then(getContactList).catch(e=>null);
+        const leads = await axios.get(`https://antiplayerbs.amocrm.ru/private/api/v2/json/leads/list`, {
+            withCredentials: true,
+            headers: headers
+        }).then(resp=>resp.data.response.leads).catch(e=>null);
+
+        if ( contacts ) {
+            contacts.map(contact => {
+                contact.leads = leads.filter(lead => contact.id === lead.main_contact_id);
+                return contact;
+            })
+        }
         response.send(contacts);
         return;
     }
